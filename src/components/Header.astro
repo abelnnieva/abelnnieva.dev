@@ -1,0 +1,38 @@
+---
+const navItems = [
+  {
+    title: "About",
+    label: "about",
+    url: "/about",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/projects",
+  },
+  {
+    title: "Contact",
+    label: "contact",
+    url: "/contact",
+  },
+];
+---
+
+<header class="flex justify-between items-center py-6 max-w-6xl mx-auto">
+  <a aria-label="home" href="/">
+    <h2 class="text-3xl font-medium">Abel N. Nieva</h2>
+  </a>
+  <nav class="flex flex-row gap-x-11">
+    {
+      navItems.map((item) => (
+        <a
+          class="transition hover:text-cyan-500 text-lg"
+          aria-label="{item.label}"
+          href="{item.url}"
+        >
+          {item.title}
+        </a>
+      ))
+    }
+  </nav>
+</header>
