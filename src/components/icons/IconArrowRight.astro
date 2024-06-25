@@ -1,10 +1,12 @@
 ---
 const { className } = Astro.props;
+const baseClass = "size-6";
+const finalClass = className ? `${baseClass} ${className}` : baseClass;
 ---
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  class={`size-6 ${className}`}
+  class={finalClass}
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
