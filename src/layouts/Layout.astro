@@ -1,4 +1,6 @@
 ---
+// Supports weights 100-900
+import "@fontsource-variable/inter";
 import Header from "../components/Header.astro";
 ---
 
@@ -16,6 +18,10 @@ import Header from "../components/Header.astro";
     <Header />
     <slot />
   </body>
+  <script
+    is:inline
+    src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+  ></script>
 </html>
 
 <style is:global>

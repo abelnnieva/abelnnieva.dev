@@ -13,7 +13,7 @@ const { title, description, anchorId } = Astro.props;
 <div class="antialiased">
   <a class="group inline-flex items-center gap-3" href={`#${anchorId}`}>
     <h2
-      class="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white"
+      class="text-2xl sm:text-3xl md:text-4xl font-bold leading-none tracking-tight text-gray-900 dark:text-white"
     >
       {title}
     </h2>
@@ -23,7 +23,7 @@ const { title, description, anchorId } = Astro.props;
     />
   </a>
   <p
-    class="my-4 text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400"
+    class="mt-4 text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400"
   >
     {description}
   </p>
