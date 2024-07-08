@@ -1,0 +1,23 @@
+---
+interface Props {
+  status?: string;
+  size?: string;
+}
+
+const { status = "success", size = "base" } = Astro.props;
+let classes = "p-1 rounded-full";
+
+switch (status) {
+  case "success":
+    classes = `${classes} text-green-500 bg-green-500/15`;
+    break;
+  case "error":
+    classes = `${classes} text-red-500 bg-red-500/15`;
+    break;
+}
+---
+
+<div class={classes}>
+  <div class={`bg-current rounded-full ${size === "sm" ? "size-2" : "size-3"}`}>
+  </div>
+</div>
