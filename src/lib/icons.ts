@@ -7,22 +7,12 @@ interface Icons {
 }
 
 const icons: Icons = {
-  link: {
-    path: `
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
-      />
-    `,
-  },
   "arrow-right": {
     path: `
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-      />
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M5 12l14 0" />
+      <path d="M13 18l6 -6" />
+      <path d="M13 6l6 6" />
     `
   },
   menu: {
@@ -34,13 +24,12 @@ const icons: Icons = {
       />
     `
   },
-  hashtag: {
+  "external-link": {
     path: `
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5"
-      />
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+      <path d="M11 13l9 -9" />
+      <path d="M15 4h5v5" />
     `
   }
 };
