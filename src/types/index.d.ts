@@ -1,5 +1,16 @@
 // src/types/index.d.ts
 
+export interface NavBarItem {
+  text: string;
+  label: string;
+  href: string;
+}
+
+export interface Footer {
+  copyright: string;
+  navBarItems: NavBarItem[];
+}
+
 export interface Project {
   logo: Image;
   heading: string;

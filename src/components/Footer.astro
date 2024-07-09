@@ -1,0 +1,28 @@
+---
+import type { Footer as Props } from "../types/index";
+
+const { pathname } = Astro.url;
+const { navBarItems, copyright } = Astro.props;
+---
+
+<footer
+  class="flex flex-col md:flex-row gap-6 justify-between items-center max-w-screen-lg mx-auto mt-12 pt-8 pb-8 md:pb-12 px-4"
+>
+  <ul class="font-medium flex flex-wrap justify-center gap-4">
+    {
+      navBarItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block dark:text-white text-sm text-gray-900 hover:text-primary-700 dark:hover:text-primary-500"
+            aria-label={item.label}
+            aria-current={pathname === item.href ? "page" : undefined}
+          >
+            {item.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="text-sm text-gray-400 dark:text-gray-300">{copyright}</p>
+</footer>
