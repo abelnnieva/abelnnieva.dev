@@ -7,7 +7,7 @@ const { logo, heading, text, techStack, livePreview } = Astro.props;
 ---
 
 <article
-  class=`antialiased group flex flex-col ${livePreview.isActive ? "hover:cursor-pointer" : ""}`
+  class=`group flex flex-col ${livePreview.isActive ? "hover:cursor-pointer" : ""}`
 >
   <a
     href={livePreview.isActive ? livePreview.link.href : undefined}

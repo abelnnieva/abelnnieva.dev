@@ -15,7 +15,7 @@ const {
   size = "base",
   isDisabled = false,
 } = Astro.props;
-let baseClasses = `antialiased font-medium text-${size}`;
+let baseClasses = `font-medium text-${size}`;
 const iconSizeClass = size === "sm" ? "size-4" : "size-5";
 
 if (Astro.props.class) {
