@@ -1,8 +1,13 @@
 ---
-import type { Footer as Props } from "../types/index";
+import type { NavigationItem } from "../types/index";
+
+interface Props {
+  navigation: NavigationItem[];
+  copyright: string;
+}
 
 const { pathname } = Astro.url;
-const { navBarItems, copyright } = Astro.props;
+const { copyright, navigation } = Astro.props;
 ---
 
 <footer
@@ -10,19 +15,19 @@ const { navBarItems, copyright } = Astro.props;
 >
   <ul class="font-medium flex flex-wrap justify-center gap-4">
     {
-      navBarItems.map((item) => (
+      navigation.map((navigationItem) => (
         <li>
           <a
-            href={item.href}
+            href={navigationItem.href}
             class="block dark:text-white text-sm text-gray-900 hover:text-primary-700 dark:hover:text-primary-500"
-            aria-label={item.label}
-            aria-current={pathname === item.href ? "page" : undefined}
+            aria-label={navigationItem.label}
+            aria-current={pathname === navigationItem.href ? "page" : undefined}
           >
-            {item.text}
+            {navigationItem.text}
           </a>
         </li>
       ))
     }
   </ul>
-  <p class="text-sm text-gray-400 dark:text-gray-300">{copyright}</p>
+  <p class="text-sm text-gray-400 dark:text-gray-300" set:html={copyright} />
 </footer>

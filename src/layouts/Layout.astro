@@ -1,6 +1,8 @@
 ---
 // Supports weights 100-900
 import "@fontsource-variable/inter";
+import { Brand, Navigation, Copyright } from "../data";
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 ---
 
@@ -15,8 +17,9 @@ import Header from "../components/Header.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="antialiased">
-    <Header />
+    <Header brand={Brand} navigation={Navigation} />
     <slot />
+    <Footer navigation={Navigation} copyright={Copyright} />
   </body>
   <script
     is:inline
