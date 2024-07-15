@@ -64,10 +64,11 @@ export default {
       sm: ["0.875rem", "1.25rem"], // 14px
       base: ["1rem", "1.5rem"], // 16px
       lg: ["1.125rem", "1.75rem"], // 18px
-      xl: ["1.25rem", "1.75rem"], // 20px
-      "2xl": ["1.375rem", "2rem"], // 22px
-      "3xl": ["1.75rem", "2.25rem"], // 28px
-      "4xl": ["2.25rem", "2.5rem"], // 36px
+      xl: ["1.25rem", "2rem"], // 20px
+      "2xl": ["1.375rem", "2.25rem"], // 22px
+      "3xl": ["1.5rem", "2.5rem"], // 24px
+      "4xl": ["1.75rem", "2.75rem"], // 28px
+      "5xl": ["2.25rem", "3rem"], // 36px
     },
   },
   plugins: [require("flowbite/plugin")],
