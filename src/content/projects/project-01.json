@@ -1,0 +1,14 @@
+{
+  "logo": "redexisgas",
+  "title": "Redexis Gas",
+  "description": "WordPress-base website for a top company in Spain specializing in the transport and distribution of natural gas.",
+  "techStack": ["php", "wordpress", "html5", "css", "javascript", "jquery"],
+  "livePreview": {
+    "isActive": false,
+    "link": {
+      "href": "https://www.redexisgas.es/en/",
+      "text": "redexisgas.es"
+    }
+  },
+  "isArchived": true
+}
