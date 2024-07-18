@@ -1,0 +1,82 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { resolveCollection } from "../lib/utils";
+import Container from "../components/Container.astro";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Project from "../components/Project.astro";
+import Section from "../components/Section.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const currentProjects = await getCollection("projects", (projectEntry) => {
+  return !projectEntry.data.isArchived;
+});
+const previousProjects = await getCollection("projects", (projectEntry) => {
+  return projectEntry.data.isArchived;
+});
+---
+
+<Layout>
+  <main>
+    <PageHeader
+      title="What I’ve crafted to leave my mark on the web."
+      text="Projects I’ve completed and am currently working on."
+    />
+    <!-- Current projects -->
+    <Section>
+      <Container>
+        <SectionHeading
+          title="Currently"
+          text="Projects I currently work on."
+        />
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+          {
+            currentProjects.reverse().map(async (project) => {
+              const logo = await getEntry(project.data.logo);
+              const techStack: any = await resolveCollection(
+                project.data.techStack
+              );
+              return (
+                <Project
+                  title={project.data.title}
+                  description={project.data.description}
+                  logo={logo.data}
+                  techStack={techStack}
+                  livePreview={project.data.livePreview}
+                />
+              );
+            })
+          }
+        </div>
+      </Container>
+    </Section>
+    <!-- Previous projects -->
+    <Section>
+      <Container>
+        <SectionHeading
+          title="Previously"
+          text="Projects I’ve worked on. Due to the nature of the internet, some projects aren’t online anymore."
+        />
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+          {
+            previousProjects.reverse().map(async (project) => {
+              const logo = await getEntry(project.data.logo);
+              const techStack: any = await resolveCollection(
+                project.data.techStack
+              );
+              return (
+                <Project
+                  title={project.data.title}
+                  description={project.data.description}
+                  logo={logo.data}
+                  techStack={techStack}
+                  livePreview={project.data.livePreview}
+                />
+              );
+            })
+          }
+        </div>
+      </Container>
+    </Section>
+  </main>
+</Layout>
