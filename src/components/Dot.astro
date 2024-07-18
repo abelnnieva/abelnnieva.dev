@@ -1,23 +1,26 @@
 ---
 interface Props {
-  status?: string;
-  size?: string;
+  color: "red" | "green";
+  className?: string;
 }
 
-const { status = "success", size = "base" } = Astro.props;
-let classes = "p-1 rounded-full";
-
-switch (status) {
-  case "success":
-    classes = `${classes} text-green-500 bg-green-500/15`;
-    break;
-  case "error":
-    classes = `${classes} text-red-500 bg-red-500/15`;
-    break;
-}
+const { color, className = "" } = Astro.props;
 ---
 
-<div class={classes}>
-  <div class={`bg-current rounded-full ${size === "sm" ? "size-2" : "size-3"}`}>
-  </div>
+<div
+  class:list={[
+    "p-1",
+    "rounded-full",
+    {
+      "bg-green-400/10": color === "green",
+      "text-green-400": color === "green",
+    },
+    {
+      "bg-red-500/10": color === "red",
+      "text-red-500": color === "red",
+    },
+    className,
+  ]}
+>
+  <div class="bg-current rounded-full size-2"></div>
 </div>

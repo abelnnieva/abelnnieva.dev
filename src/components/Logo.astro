@@ -1,0 +1,26 @@
+---
+import type { Image } from "../types";
+
+interface Props {
+  name: string;
+  image: Image;
+  className?: string;
+}
+
+const { name, image, className = "" } = Astro.props;
+---
+
+{
+  image.png ? (
+    <img src={image.png?.light} alt={`Logo of ${name}`} class={className} />
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={image.svg?.light.viewBox}
+      fill={image.svg?.light.fill}
+      class={className}
+    >
+      <Fragment set:html={image.svg?.light.graphic} />
+    </svg>
+  )
+}

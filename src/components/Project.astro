@@ -1,60 +1,66 @@
 ---
-import Link from "../components/Link.astro";
 import Dot from "../components/Dot.astro";
-import type { Project as Props } from "../types/index";
+import FramedLogo from "../components/FramedLogo.astro";
+import Icon from "./Icon.astro";
+import TechStackItem from "./TechStackItem.astro";
+import type { Link, Logo } from "../types";
 
-const { logo, heading, text, techStack, livePreview } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  logo: Logo;
+  techStack: Logo[];
+  livePreview: {
+    isActive: boolean;
+    link: Link;
+  };
+}
+
+const { title, description, logo, techStack, livePreview } = Astro.props;
 ---
 
-<article
-  class=`group flex flex-col ${livePreview.isActive ? "hover:cursor-pointer" : ""}`
->
-  <a
-    href={livePreview.isActive ? livePreview.link.href : undefined}
-    target={livePreview.isActive ? "_blank" : undefined}
-    aria-disabled={livePreview.isActive ? "true" : "false"}
-    class="block pb-6"
-  >
-    <div
-      class="mb-6 size-12 rounded-lg border flex items-center justify-center bg-white shadow-sm"
-    >
-      <img class="size-7" src={logo.src} alt={logo.alt} />
-    </div>
-    <div class="mb-6">
-      <h3
-        class={`mb-1 text-base md:text-lg font-semibold text-gray-900 dark:text-white ${livePreview.isActive ? "group-hover:text-gray-600" : ""}`}
-      >
-        {heading}
+<article class="relative group flex flex-col gap-4">
+  <div>
+    <FramedLogo name={logo.name} image={logo.image} className="relative z-10" />
+  </div>
+  <div>
+    <div class="flex items-center gap-2 mb-2">
+      <Dot
+        color={livePreview.isActive ? "green" : "red"}
+        className="relative z-10"
+      />
+      <h3 class={"text-base font-semibold text-slate-900 dark:text-white"}>
+        <span
+          class={`absolute -inset-y-4 -inset-x-4 z-0 scale-95 bg-slate-50 opacity-0 transition dark:bg-slate-800/50 sm:rounded-2xl ${livePreview.isActive ? "group-hover:scale-100 group-hover:opacity-100" : ""}`}
+        ></span>
+        <a
+          href={livePreview.isActive ? livePreview.link.href : undefined}
+          target={livePreview.isActive ? "_blank" : undefined}
+          aria-disabled={livePreview.isActive ? "true" : "false"}
+        >
+          <span class="absolute -inset-y-4 -inset-x-4 z-20 sm:rounded-2xl"
+          ></span>
+          <span class="relative z-10">{title}</span>
+        </a>
       </h3>
-      <p class="text-sm text-pretty text-gray-500 dark:text-gray-400">
-        {text}
-      </p>
     </div>
-    <ul class="flex content-start flex-wrap gap-2">
-      {
-        techStack.map((item) => (
-          <li>
-            <span class="inline-flex items-center gap-1 rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 tracking-tight">
-              <img
-                src={item.logo.src}
-                alt={item.logo.alt}
-                class="h-[10px] w-auto"
-              />
-              {item.text}
-            </span>
-          </li>
-        ))
-      }
-    </ul>
-  </a>
-  <Link
-    href={livePreview.link.href}
-    target="_blank"
-    size="sm"
-    isDisabled={!livePreview.isActive}
-    class={livePreview.isActive ? "group-hover:underline flex py-1" : undefined}
+    <p
+      class="text-sm text-pretty text-slate-500 dark:text-slate-400 relative z-10"
+    >
+      {description}
+    </p>
+  </div>
+  <div class="relative z-10 flex content-start flex-wrap items-center gap-3">
+    {
+      techStack.map((item) => (
+        <TechStackItem name={item.name} image={item.image} />
+      ))
+    }
+  </div>
+  <div
+    class=`relative z-10 flex items-center gap-1 ${livePreview.isActive ? "text-blue-600" : "text-slate-400"}`
   >
-    <Dot status={livePreview.isActive ? "success" : "error"} size="sm" />
-    <span class="leading-none">{livePreview.link.text}</span>
-  </Link>
+    <span class="font-medium text-sm">{livePreview.link.text}</span>
+    <Icon name="external-link" className="size-4" />
+  </div>
 </article>

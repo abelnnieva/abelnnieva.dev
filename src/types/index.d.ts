@@ -1,21 +1,34 @@
 // src/types/index.d.ts
 
-export interface NavigationItem {
+export interface Link {
   text: string;
-  label: string;
   href: string;
 }
 
-export interface Project {
-  logo: Image;
-  heading: string;
-  text: string;
-  techStack: TechStackItem[];
-  livePreview: {
-    isActive: boolean;
-    link: {
-      href: string;
-      text: string;
+export interface NavigationItem extends Link {
+  label: string;
+}
+
+export interface Image {
+  png?: {
+    light: string;
+    dark?: string;
+  };
+  svg?: {
+    light: {
+      fill?: string;
+      viewBox: string;
+      graphic: string;
+    };
+    dark?: {
+      fill?: string;
+      viewBox: string;
+      graphic: string;
     };
   };
+}
+
+export interface Logo {
+  name: string;
+  image: Image;
 }

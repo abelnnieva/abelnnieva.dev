@@ -1,0 +1,23 @@
+---
+import type { Image } from "../types";
+import Logo from "./Logo.astro";
+
+interface Props {
+  name: string;
+  image: Image;
+  size?: "small";
+  className?: string;
+}
+
+const { name, image, size, className = "" } = Astro.props;
+---
+
+<div
+  class={`bg-slate-50 ring-1 ring-inset ring-slate-500/10 flex items-center justify-center ${size === "small" ? "size-10 rounded-lg" : "size-16 rounded-xl"} ${className}`}
+>
+  <Logo
+    name={name}
+    image={image}
+    className={`${size === "small" ? "size-6" : "size-8"}`}
+  />
+</div>
