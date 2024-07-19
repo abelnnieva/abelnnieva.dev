@@ -1,0 +1,15 @@
+---
+import Icon from "../components/Icon.astro";
+import type { SocialMediaItem as Props } from "../types";
+
+const { text, href, icon } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  aria-label={`Follow on ${text}`}
+  class="text-slate-500 dark:text-slate-400 hover:text-primary-600"
+>
+  <Icon name={icon} className="size-6" />
+</a>

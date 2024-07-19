@@ -1,12 +1,46 @@
 ---
-import Hero from "../components/Hero.astro";
+import { About, SocialMedia } from "../data";
+import Avatar from "../components/Avatar.astro";
+import Container from "../components/Container.astro";
+import ExternalLink from "../components/ExternalLink.astro";
 import Layout from "../layouts/Layout.astro";
+import SocialLink from "../components/SocialLink.astro";
 ---
 
-<Layout
-  title="Abel N. Nieva | Senior Frontend Engineer with 9+ years of expertise"
->
+<Layout>
   <main>
-    <Hero />
+    <div class="pt-10 md:pt-[4.75rem] pb-6 md:pb-12">
+      <Container>
+        <div class="w-full md:w-2/3">
+          <Avatar className="mb-6" />
+          <h1
+            class="mb-4 text-4xl/none md:text-5xl/none font-bold text-slate-900 dark:text-white"
+          >
+            {About.title}
+          </h1>
+          <p
+            class="mb-6 text-base md:text-lg md:text-balance text-slate-500 dark:text-slate-400"
+          >
+            {About.description}
+            <ExternalLink href={About.link.href}>
+              {About.link.text}
+            </ExternalLink>
+          </p>
+          <ul class="flex align-middle gap-6">
+            {
+              SocialMedia.map((socialProfile) => (
+                <li>
+                  <SocialLink
+                    text={socialProfile.text}
+                    href={socialProfile.href}
+                    icon={socialProfile.icon}
+                  />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </Container>
+    </div>
   </main>
 </Layout>

@@ -32,3 +32,7 @@ export interface Logo {
   name: string;
   image: Image;
 }
+
+export interface SocialMediaItem extends Link {
+  icon: "brand-x" | "brand-instagram" | "brand-github" | "brand-linkedin";
+}
