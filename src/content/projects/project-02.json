@@ -1,0 +1,21 @@
+{
+  "logo": "inges",
+  "title": "ING España",
+  "description": "Hybrid mobile application for a leading bank in Spain equipped with tools for personal finance management.",
+  "techStack": [
+    "javascript",
+    "backbonejs",
+    "marionettejs",
+    "karma",
+    "jasmine",
+    "sinon"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://play.google.com/store/apps/details?id=www.ingdirect.nativeframe",
+      "text": "play.google.com"
+    }
+  },
+  "isArchived": true
+}

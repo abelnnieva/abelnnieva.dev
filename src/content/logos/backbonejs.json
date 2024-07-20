@@ -1,0 +1,12 @@
+{
+  "name": "Backbone.js",
+  "image": {
+    "svg": {
+      "light": {
+        "fill": "none",
+        "viewBox": "0 0 130 161",
+        "graphic": "<path fill='#002A41' fill-rule='evenodd' stroke='#848484' stroke-width='.179' d='M.096.268V87.05l64.595 36.822v-25.03L21.478 74.21V35.518l43.213 24.633V37.09L.096.268Z' clip-rule='evenodd'/><path fill='#0071B5' fill-rule='evenodd' stroke='#848484' stroke-width='.179' d='M129.285.268V87.05l-64.594 36.822v-25.03l43.212-24.633V35.518L64.691 60.15V37.09L129.285.268ZM.096 160.732V73.95l64.595-36.822v25.03L21.478 86.79v36.723L64.691 98.88v25.029L.096 160.732Z' clip-rule='evenodd'/><path fill='#002A41' fill-rule='evenodd' stroke='#848484' stroke-width='.179' d='M129.285 160.732V73.95L64.691 37.128v25.03l43.212 24.633v36.723L64.691 98.881v25.029l64.594 36.822Z' clip-rule='evenodd'/>"
+      }
+    }
+  }
+}
