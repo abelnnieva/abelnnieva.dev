@@ -1,0 +1,22 @@
+{
+  "logo": "portalpaciente",
+  "title": "Portal Paciente",
+  "description": "Hybrid mobile application for the leading health insurer in Spain that tracks data from wearable healthcare devices.",
+  "techStack": [
+    "typescript",
+    "angular",
+    "ionic",
+    "rxjs",
+    "java",
+    "spring",
+    "mongodb"
+  ],
+  "livePreview": {
+    "isActive": false,
+    "link": {
+      "href": "https://play.google.com/store/apps/details?id=es.sanitas.hosp.saludconectada",
+      "text": "play.google.com"
+    }
+  },
+  "isArchived": true
+}
