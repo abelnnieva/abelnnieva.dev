@@ -1,16 +1,44 @@
 ---
-interface Props {
-  href: string;
-}
+import type { HTMLTag, Polymorphic } from "astro/types";
 
-const { href } = Astro.props;
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  color?: keyof typeof colorClasses;
+  size?: keyof typeof sizeClasses;
+}>;
+
+const {
+  as: Tag,
+  class: className,
+  color = "primary",
+  size = "base",
+  ...props
+} = Astro.props;
+
+const baseClasses =
+  "transition inline-flex items-center gap-1 font-medium rounded-full";
+
+export const colorClasses = {
+  primary:
+    "text-white bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700",
+  secondary:
+    "text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700",
+};
+
+export const sizeClasses = {
+  xs: "h-8 px-3 text-xs",
+  sm: "h-9 px-3 text-sm",
+  base: "h-10 px-5 text-sm",
+};
+
+const classes = [
+  baseClasses,
+  colorClasses[color as keyof typeof colorClasses],
+  sizeClasses[size as keyof typeof sizeClasses],
+  className,
+];
 ---
 
-<a
-  href={href}
-  class="inline-flex items-center gap-1 rounded-md transition hover:bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-700/10"
->
-  <slot name="before" />
+<Tag class:list={classes} {...props}>
   <slot />
-  <slot name="after" />
-</a>
+</Tag>

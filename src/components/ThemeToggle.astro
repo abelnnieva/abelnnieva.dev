@@ -1,0 +1,63 @@
+---
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+---
+
+<Button as="button" color="secondary" size="sm" id="toggleButton">
+  <Icon name="sun" size="lg" id="lightIcon" />
+  <Icon name="moon-stars" size="lg" id="darkIcon" />
+</Button>
+
+<script>
+  // Ensure the script runs after the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    // Retrieve the stored theme from localStorage
+    const storedTheme = localStorage.getItem("theme");
+    // Check the user's system preference for dark mode
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    // Determine the current theme based on stored theme or system preference
+    const currentTheme =
+      storedTheme || (prefersDarkScheme.matches ? "dark" : "light");
+
+    // Select the icons and button elements
+    const $lightIcon = document.getElementById("lightIcon");
+    const $darkIcon = document.getElementById("darkIcon");
+    const $toggleButton = document.getElementById("toggleButton");
+
+    // Function to toggle the visibility of the icons based on the theme
+    const toggleIcon = (theme) => {
+      if (theme === "dark") {
+        $lightIcon?.setAttribute("hidden", "");
+        $darkIcon?.removeAttribute("hidden");
+      } else {
+        $lightIcon?.removeAttribute("hidden");
+        $darkIcon?.setAttribute("hidden", "");
+      }
+    };
+
+    // Function to toggle the theme and update localStorage
+    const toggleTheme = (newTheme) => {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      toggleIcon(newTheme);
+      localStorage.setItem("theme", newTheme);
+    };
+
+    // Initialize the icons and theme based on the current theme
+    toggleIcon(currentTheme);
+    document.documentElement.classList.toggle("dark", currentTheme === "dark");
+
+    // Add event listener to the toggle button to switch themes on click
+    $toggleButton?.addEventListener("click", () => {
+      const newTheme = document.documentElement.classList.contains("dark")
+        ? "light"
+        : "dark";
+      toggleTheme(newTheme);
+    });
+
+    // Add event listener to detect changes in the system theme preference
+    prefersDarkScheme.addEventListener("change", (event) => {
+      const newTheme = event.matches ? "dark" : "light";
+      toggleTheme(newTheme);
+    });
+  });
+</script>
