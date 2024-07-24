@@ -18,7 +18,7 @@ const { brand, navigation } = Astro.props;
 <header
   class="fixed z-50 top-0 left-0 right-0 border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900"
 >
-  <Container className="flex items-center justify-between h-14">
+  <Container class="flex items-center justify-between h-14">
     <a href="/">
       <h1
         class="self-center text-lg/none md:text-xl/none font-bold whitespace-nowrap text-gray-900 dark:text-white"
@@ -61,10 +61,10 @@ const { brand, navigation } = Astro.props;
                 <a
                   href={navigationItem.href}
                   class:list={[
-                    "text-base md:text-sm md:font-medium text-gray-900 dark:text-white md:hover:text-blue-700 md:dark:hover:text-blue-500",
-                    "px-4 py-2 md:px-0 md:py-0 hover:bg-gray-100 md:hover:bg-inherit dark:hover:bg-gray-600 md:dark:hover:bg-inherit dark:hover:text-white md:dark:hover:text-inherit",
+                    "text-base md:text-sm md:font-medium text-gray-900 dark:text-white md:hover:text-primary-700 md:dark:hover:text-primary-500",
+                    "px-4 py-2 md:px-0 md:py-0 hover:bg-gray-100 md:hover:bg-inherit dark:hover:bg-gray-600 md:dark:hover:bg-inherit dark:hover:text-white",
                     {
-                      "md:text-blue-700 md:dark:text-blue-500": isCurrent,
+                      "md:text-primary-700 md:dark:text-primary-500": isCurrent,
                     },
                   ]}
                   aria-label={navigationItem.label}

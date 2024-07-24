@@ -1,10 +1,6 @@
-const date = new Date();
-
 import type { NavigationItem, SocialMediaItem } from "../types";
 
 export const Brand: string = "Abel N. Nieva";
-
-export const Copyright: string = `&copy; ${date.getFullYear()} Abel N. Nieva. All rights reserved.`;
 
 export const Navigation: NavigationItem[] = [
   {
