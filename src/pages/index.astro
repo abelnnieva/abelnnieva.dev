@@ -9,6 +9,7 @@ import Note from "../components/Note.astro";
 import Section from "../components/Section.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import SocialLink from "../components/SocialLink.astro";
+import { calculateReadingTime } from "../lib/utils";
 
 const allNotes = await getCollection("notes", ({ data }) => {
   return data.isDraft !== true;
@@ -73,6 +74,7 @@ allNotes.sort(
               allNotes.slice(0, 5).map(async (note) => {
                 const topic = await getEntry(note.data.topic);
                 const logo = await getEntry(topic.data.logo);
+                const readingTime = calculateReadingTime(note.body);
                 return (
                   <Note
                     slug={note.slug}
@@ -84,6 +86,7 @@ allNotes.sort(
                       description: topic.data.description,
                       logo: logo.data,
                     }}
+                    readingTime={readingTime}
                   />
                 );
               })

@@ -10,3 +10,11 @@ export const resolveCollection = async (collection) => {
     })
   );
 };
+
+// Function to calculate reading time in minutes
+export const calculateReadingTime = (text) => {
+  const textContent = text.replace(/<[^>]+>/g, ""); // Strip HTML tags
+  const wordsPerMinute = 200; // Average reading speed
+  const words = textContent.split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
+};

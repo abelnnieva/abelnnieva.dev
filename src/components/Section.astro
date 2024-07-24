@@ -1,11 +1,11 @@
 ---
 interface Props {
-  className?: string;
+  class?: string;
 }
 
-const { className = "" } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<section class={`py-6 md:py-10 ${className}`}>
+<section class:list={["py-6 md:py-12", className]}>
   <slot />
 </section>
