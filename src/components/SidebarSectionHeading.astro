@@ -1,14 +1,17 @@
 ---
 interface Props {
   title: string;
-  className?: string;
+  class?: string;
 }
 
-const { title, className = "" } = Astro.props;
+const { title, class: className } = Astro.props;
 ---
 
 <h4
-  class={`text-base/none font-bold uppercase px-4 py-3 text-slate-900 dark:text-white ${className}`}
+  class:list={[
+    "text-base/none font-bold uppercase px-4 py-3 text-gray-900 dark:text-white",
+    className,
+  ]}
 >
   {title}
 </h4>

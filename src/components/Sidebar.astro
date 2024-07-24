@@ -1,11 +1,11 @@
 ---
 interface Props {
-  className?: string;
+  class?: string;
 }
 
-const { className = "" } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<aside class={`flex flex-col gap-12 ${className}`}>
+<aside class:list={["flex flex-col gap-12", className]}>
   <slot />
 </aside>
