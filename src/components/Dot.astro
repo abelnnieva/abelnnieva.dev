@@ -1,26 +1,23 @@
 ---
 interface Props {
-  color: "red" | "green";
-  className?: string;
+  color: keyof typeof colorClasses;
+  class?: string;
 }
 
-const { color, className = "" } = Astro.props;
+const { color, class: className } = Astro.props;
+
+const colorClasses = {
+  red: "bg-red-500/10 text-red-500",
+  green: "bg-green-500/10 text-green-500",
+};
+
+const classes = [
+  "p-1 rounded-full",
+  colorClasses[color as keyof typeof colorClasses],
+  className,
+];
 ---
 
-<div
-  class:list={[
-    "p-1",
-    "rounded-full",
-    {
-      "bg-green-400/10": color === "green",
-      "text-green-400": color === "green",
-    },
-    {
-      "bg-red-500/10": color === "red",
-      "text-red-500": color === "red",
-    },
-    className,
-  ]}
->
+<div class:list={classes}>
   <div class="bg-current rounded-full size-2"></div>
 </div>

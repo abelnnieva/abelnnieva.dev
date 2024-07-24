@@ -5,14 +5,19 @@ import type { Image } from "../types";
 interface Props {
   name: string;
   image: Image;
+  position: number;
 }
 
-const { name, image } = Astro.props;
+const { name, image, position } = Astro.props;
 ---
 
-<div
+<li
   class="flex gap-1 items-center text-xs/[1.25rem] text-slate-900 dark:text-white"
+  itemprop="itemListElement"
+  itemscope
+  itemtype="https://schema.org/ListItem"
 >
-  <Logo name={name} image={image} className="h-3" />
-  {name}
-</div>
+  <meta itemprop="position" content={`${position}`} />
+  <Logo name={name} image={image} size="2xs" />
+  <span itemprop="name">{name}</span>
+</li>

@@ -9,19 +9,19 @@ interface Props {
 const { title, text } = Astro.props;
 ---
 
-<div class="pb-6 md:pb-10 pt-28 md:pt-32">
-  <Container>
-    <div class="w-2/3">
-      <h1
-        class="mb-4 text-4xl/none md:text-5xl/none text-balance font-bold text-slate-900 dark:text-white"
-      >
-        {title}
-      </h1>
-      <p
-        class="text-base md:text-lg text-balance text-slate-500 dark:text-slate-400"
-      >
-        {text}
-      </p>
-    </div>
-  </Container>
-</div>
+<Container class="pb-6 md:pb-12 pt-16 md:pt-32">
+  <div class="w-2/3">
+    <h2
+      class="mb-4 text-4xl/none md:text-5xl/none text-balance font-bold text-gray-900 dark:text-white motion-safe:animate-text-reveal"
+      style="--text-reveal-opacity-step-0: 1; --text-reveal-x-step-0: 0; --text-reveal-y-step-0: 0px; --text-reveal-opacity-step-1: 1; --text-reveal-x-step-1: 0; --text-reveal-y-step-1: 0px; --text-reveal-opacity-step-2: 1; --text-reveal-x-step-2: 0; --text-reveal-y-step-2: 0px; --text-reveal-opacity-step-3: 1; --text-reveal-x-step-3: 0; --text-reveal-y-step-3: 0px;"
+    >
+      {title}
+    </h2>
+    <p
+      class="text-base md:text-lg text-balance text-gray-500 dark:text-gray-400 motion-safe:animate-text-reveal"
+      style="--text-reveal-opacity-step-0: 0; --text-reveal-x-step-0: 0; --text-reveal-y-step-0: 25px; --text-reveal-opacity-step-1: 1; --text-reveal-x-step-1: 0; --text-reveal-y-step-1: 0px; --text-reveal-opacity-step-2: 1; --text-reveal-x-step-2: 0; --text-reveal-y-step-2: 0px; --text-reveal-opacity-step-3: 1; --text-reveal-x-step-3: 0; --text-reveal-y-step-3: 0px;"
+    >
+      {text}
+    </p>
+  </div>
+</Container>

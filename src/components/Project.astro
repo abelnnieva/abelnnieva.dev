@@ -19,48 +19,81 @@ interface Props {
 const { title, description, logo, techStack, livePreview } = Astro.props;
 ---
 
-<article class="relative group flex flex-col gap-4">
+<article
+  class="relative group flex flex-col gap-4"
+  itemscope
+  itemtype="https://schema.org/CreativeWork"
+>
   <div>
-    <FramedLogo name={logo.name} image={logo.image} className="relative z-10" />
+    <FramedLogo
+      name={logo.name}
+      image={logo.image}
+      class:list={[
+        "relative z-10 ",
+        {
+          "group-hover:scale-110 transition": livePreview.isActive,
+        },
+      ]}
+    />
   </div>
   <div>
     <div class="flex items-center gap-2 mb-2">
       <Dot
         color={livePreview.isActive ? "green" : "red"}
-        className="relative z-10"
+        class="relative z-10"
       />
-      <h3 class={"text-base font-semibold text-slate-900 dark:text-white"}>
+      <h4 class={"text-base font-semibold text-gray-900 dark:text-white"}>
         <span
-          class={`absolute -inset-y-4 -inset-x-4 z-0 scale-95 bg-slate-50 opacity-0 transition dark:bg-slate-800/50 sm:rounded-2xl ${livePreview.isActive ? "group-hover:scale-100 group-hover:opacity-100" : ""}`}
-        ></span>
+          class:list={[
+            "absolute -inset-y-4 -inset-x-4 z-0 scale-95 bg-gray-50 opacity-0 transition dark:bg-gray-800/50 md:rounded-lg",
+            {
+              "group-hover:scale-100 group-hover:opacity-100":
+                livePreview.isActive,
+            },
+          ]}></span>
         <a
-          href={livePreview.isActive ? livePreview.link.href : undefined}
-          target={livePreview.isActive ? "_blank" : undefined}
-          aria-disabled={livePreview.isActive ? "true" : "false"}
+          href={livePreview.isActive ? livePreview.link.href : null}
+          target={livePreview.isActive ? "_blank" : null}
+          aria-disabled={livePreview.isActive ? null : "true"}
+          itemprop="url"
         >
-          <span class="absolute -inset-y-4 -inset-x-4 z-20 sm:rounded-2xl"
+          <span class="absolute -inset-y-4 -inset-x-4 z-20 md:rounded-lg"
           ></span>
-          <span class="relative z-10">{title}</span>
+          <span class="relative z-10" itemprop="name">{title}</span>
         </a>
-      </h3>
+      </h4>
     </div>
     <p
-      class="text-sm text-pretty text-slate-500 dark:text-slate-400 relative z-10"
+      class="text-sm text-pretty text-gray-500 dark:text-gray-400 relative z-10"
+      itemprop="about"
     >
       {description}
     </p>
   </div>
-  <div class="relative z-10 flex content-start flex-wrap items-center gap-3">
+  <ul
+    class="relative z-10 flex content-start flex-wrap items-center gap-3"
+    itemscope
+    itemtype="https://schema.org/ItemList"
+  >
     {
-      techStack.map((item) => (
-        <TechStackItem name={item.name} image={item.image} />
+      techStack.map((item, index) => (
+        <TechStackItem
+          name={item.name}
+          image={item.image}
+          position={index + 1}
+        />
       ))
     }
-  </div>
+  </ul>
   <div
-    class=`relative z-10 flex items-center gap-1 ${livePreview.isActive ? "text-blue-600" : "text-slate-400"}`
+    class:list={[
+      "relative z-10 flex items-center gap-1",
+      livePreview.isActive
+        ? "text-primary-700 dark:text-primary-500"
+        : "text-gray-400 dark:text-gray-500",
+    ]}
   >
     <span class="font-medium text-sm">{livePreview.link.text}</span>
-    <Icon name="external-link" className="size-4" />
+    <Icon name="external-link" />
   </div>
 </article>
