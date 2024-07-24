@@ -2,16 +2,15 @@
 import AvatarImage from "../../public/assets/notes/authors/abelnnieva-128x128.jpg";
 
 interface Props {
-  className?: string;
+  class?: string;
 }
 
-const { className = "" } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div class={`rounded-full ${className}`}>
-  <img
-    src={AvatarImage.src}
-    alt="Avatar for Abel N. Nieva"
-    class={`size-16 rounded-full`}
-  />
-</div>
+<img
+  itemprop="image"
+  src={AvatarImage.src}
+  alt="Avatar for Abel N. Nieva"
+  class:list={["size-16 rounded-full", className]}
+/>

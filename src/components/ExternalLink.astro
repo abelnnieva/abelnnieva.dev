@@ -1,14 +1,17 @@
 ---
 interface Props {
   href: string;
-  className?: string;
+  class?: string;
 }
 
-const { href, className = "" } = Astro.props;
+const { href, class: className } = Astro.props;
 ---
 
 <a
-  class=`underline hover:text-blue-600 ${className}`
+  class:list={[
+    "underline hover:text-primary-700 dark:hover:text-primary-500",
+    className,
+  ]}
   target="_blank"
   rel="noopener noreferrer"
   href={href}
