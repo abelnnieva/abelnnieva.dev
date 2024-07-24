@@ -4,23 +4,59 @@ import type { Image } from "../types";
 interface Props {
   name: string;
   image: Image;
-  className?: string;
+  size?: keyof typeof sizeClasses;
+  class?: string;
 }
 
-const { name, image, className = "" } = Astro.props;
+const { name, image, size = "base", class: className } = Astro.props;
+
+const sizeClasses = {
+  sm: "size-6",
+  base: "size-8",
+};
+
+const classes = [sizeClasses[size as keyof typeof sizeClasses], className];
 ---
 
 {
   image.png ? (
-    <img src={image.png?.light} alt={`Logo of ${name}`} class={className} />
+    <>
+      <img
+        src={image.png?.light}
+        alt={`Logo of ${name}`}
+        class:list={[classes, { "block dark:hidden": image.png?.dark }]}
+        itemprop="image"
+      />
+      {image.png?.dark && (
+        <img
+          src={image.png?.dark}
+          alt={`Logo of ${name}`}
+          class:list={[classes, "hidden dark:block"]}
+          itemprop="image"
+        />
+      )}
+    </>
   ) : (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={image.svg?.light.viewBox}
-      fill={image.svg?.light.fill}
-      class={className}
-    >
-      <Fragment set:html={image.svg?.light.graphic} />
-    </svg>
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={image.svg?.light.viewBox}
+        fill={image.svg?.light.fill}
+        class:list={[classes, { "block dark:hidden": image.svg?.dark }]}
+      >
+        <Fragment set:html={image.svg?.light.graphic} />
+      </svg>
+      {image.svg?.dark && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox={image.svg?.dark.viewBox}
+          fill={image.svg?.dark.fill}
+          class:list={[classes, "hidden dark:block"]}
+        >
+          <Fragment set:html={image.svg?.dark.graphic} />
+        </svg>
+      )}
+      <meta itemprop="name" content={`Logo of ${name}`} />
+    </div>
   )
 }
