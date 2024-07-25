@@ -1,0 +1,15 @@
+{
+  "name": "Onesait",
+  "image": {
+    "svg": {
+      "light": {
+        "viewBox": "0 0 20 36",
+        "graphic": "<path fill='#193b47' d='M0 0v36l20-5.82V5.82Zm1.8 2.4 16.4 4.77v21.65L1.8 33.6V2.4Z'/>"
+      },
+      "dark": {
+        "viewBox": "0 0 20 36",
+        "graphic": "<path fill='#ffffff' d='M0 0v36l20-5.82V5.82Zm1.8 2.4 16.4 4.77v21.65L1.8 33.6V2.4Z'/>"
+      }
+    }
+  }
+}

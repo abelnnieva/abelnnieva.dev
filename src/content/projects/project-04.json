@@ -1,0 +1,22 @@
+{
+  "logo": "onesait",
+  "title": "Onesait",
+  "description": "Website for a leading provider of industry-specific software solutions, using WordPress as a headless CMS and Nuxt.js.",
+  "techStack": [
+    "javascript",
+    "vuejs",
+    "nuxtjs",
+    "php",
+    "wordpress",
+    "graphql",
+    "mysql"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://www.onesait.com/",
+      "text": "onesait.com"
+    }
+  },
+  "isArchived": true
+}
