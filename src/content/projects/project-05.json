@@ -1,0 +1,21 @@
+{
+  "logo": "onesait",
+  "title": "Minsait ACS",
+  "description": "Website for a top provider of power grid control and automation technology in the electric power industry.",
+  "techStack": [
+    "javascript",
+    "vuejs",
+    "nuxtjs",
+    "strapi",
+    "graphql",
+    "mongodb"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://www.minsaitacs.com/",
+      "text": "minsaitacs.com"
+    }
+  },
+  "isArchived": true
+}
