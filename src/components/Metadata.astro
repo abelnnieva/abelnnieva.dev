@@ -1,0 +1,23 @@
+---
+interface Props {
+  size?: keyof typeof sizeClasses;
+  class?: string;
+}
+
+const { size = "base", class: className } = Astro.props;
+
+const sizeClasses = {
+  sm: "gap-2 text-sm",
+  base: "gap-4 text-base",
+};
+
+const classes = [
+  "group text-gray-400 dark:text-gray-500 flex items-center",
+  sizeClasses[size as keyof typeof sizeClasses],
+  className,
+];
+---
+
+<ul role="list" class:list={classes}>
+  <slot />
+</ul>
