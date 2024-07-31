@@ -71,10 +71,21 @@ const notes = defineCollection({
   }),
 });
 
+const companies = defineCollection({
+  type: "data",
+  schema: z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    url: z.string().url().optional(),
+    logo: reference("logos"),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   logos: logos,
   projects: projects,
   topics: topics,
   notes: notes,
+  companies: companies,
 };

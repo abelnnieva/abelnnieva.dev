@@ -1,0 +1,12 @@
+{
+  "name": "Abel N. Nieva",
+  "image": {
+    "svg": {
+      "light": {
+        "fill": "none",
+        "viewBox": "0 0 184 184",
+        "graphic": "<rect width='184' height='184' fill='#000' rx='20'/><path fill='#fff' fill-rule='evenodd' d='M79 67.765 63 48H53v88h10l19.333-47.765L121 136h10V48h-10v59.294L97 48H87l-8 19.765Zm7.746 9.568 21.016 25.961L92 64.353l-5.254 12.98Zm-12.159 1.334L63 64.353v42.941l11.587-28.627Z' clip-rule='evenodd'/>"
+      }
+    }
+  }
+}
