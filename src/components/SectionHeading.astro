@@ -1,19 +1,24 @@
 ---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+
 interface Props {
   title: string;
-  text: string;
+  text?: string;
 }
 
 const { title, text } = Astro.props;
 ---
 
-<div class="pb-6 md:pb-12">
-  <h2
-    class="mb-3 text-2xl/none md:text-3xl/none font-bold text-gray-900 dark:text-white"
-  >
+<div class="pb-6 md:pb-12 flex flex-col gap-3">
+  <Heading as="h3" size="xl">
     {title}
-  </h2>
-  <p class="text-base text-gray-500 dark:text-gray-400">
-    {text}
-  </p>
+  </Heading>
+  {
+    text && (
+      <Text as="p" color="gray.500">
+        {text}
+      </Text>
+    )
+  }
 </div>

@@ -1,23 +1,33 @@
 ---
 interface Props {
   date: Date;
+  format: keyof typeof dateFormats;
   itemprop?: string | null | undefined;
   class?: string;
 }
 
-const { date, itemprop, class: className } = Astro.props;
+const { date, format, itemprop, class: className } = Astro.props;
+
+const dateFormats = {
+  YYYY: date.toLocaleDateString("en", {
+    year: "numeric",
+  }),
+  "YYYY-MM": date.toLocaleDateString("en", {
+    year: "numeric",
+    month: "short",
+  }),
+  "YYYY-MM-DD": date.toLocaleDateString("en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }),
+};
 ---
 
 <time
-  class:list={["text-gray-400 dark:text-gray-500", className]}
-  datetime={date.toISOString()}
+  class:list={[className]}
+  datetime={dateFormats[format as keyof typeof dateFormats]}
   itemprop={itemprop}
 >
-  {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
+  {dateFormats[format as keyof typeof dateFormats]}
 </time>
