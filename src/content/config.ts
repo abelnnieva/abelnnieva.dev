@@ -81,6 +81,22 @@ const companies = defineCollection({
   }),
 });
 
+const workExperience = defineCollection({
+  type: "data",
+  schema: z.object({
+    company: reference("companies"),
+    position: z.string(),
+    startDate: z.preprocess((arg) => {
+      if (typeof arg === "string" || arg instanceof Date) return new Date(arg);
+    }, z.date()),
+    endDate: z.preprocess((arg) => {
+      if (typeof arg === "string" || arg instanceof Date) return new Date(arg);
+    }, z.date()),
+    isActivePosition: z.boolean().default(false),
+    description: z.string(),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   logos: logos,
@@ -88,4 +104,5 @@ export const collections = {
   topics: topics,
   notes: notes,
   companies: companies,
+  "work-experience": workExperience,
 };

@@ -1,0 +1,7 @@
+{
+  "company": "sanitas",
+  "position": "Senior Frontend Engineer",
+  "startDate": "2018-02-01",
+  "endDate": "2019-11-30",
+  "description": "Developed a health tracking mobile app with Angular and Ionic, ensuring a responsive experience. Defined the client-side data model with TypeScript, optimized mobile performance, and integrated wearable apps using Android SDK and Apache Cordova. Implemented security measures for sensitive data and collaborated with UI/UX designers to transform data into useful charts."
+}
