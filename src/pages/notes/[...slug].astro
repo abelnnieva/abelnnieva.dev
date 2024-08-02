@@ -1,0 +1,89 @@
+---
+import { Brand } from "@/data";
+import { calculateReadingTime } from "@/lib/utils";
+import { getCollection, getEntry } from "astro:content";
+import Avatar from "@/components/Avatar.astro";
+import Container from "@/components/Container.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import FramedLogo from "@/components/FramedLogo.astro";
+import Heading from "@/components/Heading.astro";
+import Layout from "@/layouts/Layout.astro";
+import Metadata from "@/components/Metadata.astro";
+import MetadataItem from "@/components/MetadataItem.astro";
+import ReadingTime from "@/components/ReadingTime.astro";
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const allNotes = await getCollection("notes");
+  return allNotes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+
+const { Content } = await note.render();
+
+const logo = await getEntry("logos", note.data.topic.id);
+
+const readingTime = calculateReadingTime(note.body);
+---
+
+<Layout>
+  <Container class="px-4 pb-6 md:pb-12 pt-8 md:pt-16">
+    <div class="flex justify-between gap-4">
+      <aside class="w-16" aria-label="Article actions"></aside>
+      <main class="max-w-screen-md">
+        <article
+          class="flex flex-col gap-8"
+          itemscope
+          itemtype="https://schema.org/BlogPosting"
+        >
+          <header class="flex flex-col gap-8">
+            <FramedLogo name={logo.data.name} image={logo.data.image} />
+            <Heading as="h2" size="3xl" class="text-balance">
+              {note.data.title}
+            </Heading>
+            <Metadata>
+              <MetadataItem>
+                <FormattedDate
+                  date={note.data.publishDate}
+                  format="YYYY-MM-DD"
+                  itemprop="datePublished"
+                />
+              </MetadataItem>
+              <MetadataItem>
+                <ReadingTime time={readingTime} />
+              </MetadataItem>
+              <MetadataItem>
+                <div
+                  itemscope
+                  itemtype="https://schema.org/Person"
+                  itemprop="author"
+                  class="flex items-center gap-3"
+                >
+                  <Avatar class="size-7" />
+                  <span
+                    itemprop="name"
+                    class="text-gray-400 dark:text-gray-500"
+                  >
+                    {Brand}
+                  </span>
+                </div>
+              </MetadataItem>
+            </Metadata>
+          </header>
+          <section itemprop="articleBody">
+            <div
+              class="prose prose-gray dark:prose-invert md:prose-lg max-w-none hover:prose-a:text-blue-700"
+            >
+              <Content />
+            </div>
+          </section>
+        </article>
+      </main>
+      <div class="w-16"></div>
+    </div>
+  </Container>
+</Layout>

@@ -97,7 +97,8 @@ export default {
       "3xl": ["1.5rem", "2.5rem"], // 24px
       "4xl": ["1.75rem", "2.75rem"], // 28px
       "5xl": ["2.5rem", "3rem"], // 40px
+      "6xl": ["3rem", "3.25rem"], // 48px
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"), require("@tailwindcss/typography")],
 };
