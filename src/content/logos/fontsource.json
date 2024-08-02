@@ -1,0 +1,12 @@
+{
+  "name": "Fontsource",
+  "image": {
+    "svg": {
+      "light": {
+        "fill": "none",
+        "viewBox": "0 0 30 31",
+        "graphic": "<path fill='#625BF8' d='M26 .5H4a4 4 0 0 0-4 4v22a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4v-22a4 4 0 0 0-4-4Z'/><path fill='#fff' fill-rule='evenodd' d='M11.7 7.7h10.8v5.4h-2.4v-3h-8.4v4.2h5.4v2.4h-5.4v4.2h1.8v2.4h-6v-2.4h1.8v-4.2H7.5v-2.4h1.8v-4.2H7.5V7.7h4.2Z' clip-rule='evenodd'/>"
+      }
+    }
+  }
+}

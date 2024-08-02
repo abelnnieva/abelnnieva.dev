@@ -1,0 +1,14 @@
+{
+  "logo": "abelnnieva",
+  "title": "Abel N. Nieva",
+  "description": "My personal website, which you are currently on, built with Astro and influenced by the design of Jarocki.me.",
+  "techStack": ["tailwindcss", "typescript", "astro", "flowbite", "fontsource"],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://github.com/abelnnieva/abelnnieva.dev",
+      "text": "github.com"
+    }
+  },
+  "isArchived": false
+}
