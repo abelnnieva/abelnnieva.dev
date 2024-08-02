@@ -1,0 +1,22 @@
+{
+  "logo": "minsaitpayments",
+  "title": "Minsait Payments",
+  "description": "Website for a technology company that provides innovative card issuance and payment processing solutions.",
+  "techStack": [
+    "javascript",
+    "vuejs",
+    "nuxtjs",
+    "php",
+    "wordpress",
+    "graphql",
+    "mysql"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://www.minsaitpayments.com/en/",
+      "text": "minsaitpayments.com"
+    }
+  },
+  "isArchived": true
+}

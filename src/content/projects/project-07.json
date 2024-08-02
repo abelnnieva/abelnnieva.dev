@@ -1,0 +1,22 @@
+{
+  "logo": "onesait",
+  "title": "Onesait Experience",
+  "description": "Innovative design system library for a leading Spanish technology firm to craft seamless digital experiences.",
+  "techStack": [
+    "html5",
+    "sass",
+    "javascript",
+    "vuejs",
+    "stencil",
+    "storybook",
+    "jest"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://ods.ux.onesait.com/ods-plus/en-US/",
+      "text": "ods.ux.onesait.com"
+    }
+  },
+  "isArchived": true
+}
