@@ -6,11 +6,11 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<article
+<section
   class:list={[
     "border border-gray-200 dark:border-gray-600 rounded-lg",
     className,
   ]}
 >
   <slot />
-</article>
+</section>

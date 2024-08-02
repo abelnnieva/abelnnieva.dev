@@ -9,6 +9,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 const { as: Tag, class: className, size = "base", ...props } = Astro.props;
 
 export const sizeClasses = {
+  sm: "text-sm font-semibold ",
   base: "text-base font-semibold",
   xl: "text-2xl/none md:text-3xl/none font-bold",
   "2xl": "text-4xl/none md:text-5xl/none font-bold",

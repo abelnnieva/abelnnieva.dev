@@ -42,3 +42,15 @@ export interface Topic {
   description: string;
   logo: Logo;
 }
+
+export interface EducationItem {
+  school: string;
+  degree: string;
+  startDate: Date;
+  endDate: Date;
+}
+
+export interface SkillItem {
+  name: string;
+  relatedSkills: string[];
+}

@@ -1,5 +1,7 @@
 ---
+import { Education, Skills } from "../data";
 import { getCollection, getEntry } from "astro:content";
+import Badge from "@/components/Badge.astro";
 import Container from "@/components/Container.astro";
 import ExternalLink from "@/components/ExternalLink.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
@@ -10,6 +12,9 @@ import MetadataItem from "@/components/MetadataItem.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import Section from "@/components/Section.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import SidebarSection from "@/components/SidebarSection.astro";
+import SidebarSectionHeading from "@/components/SidebarSectionHeading.astro";
 import Text from "@/components/Text.astro";
 
 const allWorkExperience = await getCollection("work-experience");
@@ -70,8 +75,63 @@ const allWorkExperience = await getCollection("work-experience");
             }
           </div>
         </Section>
+        <Section>
+          <SectionHeading title="Education" />
+          <div class="flex flex-col gap-12">
+            {
+              Education.map(async (educationItem) => {
+                return (
+                  <article class="flex flex-col gap-2">
+                    <Heading as="h4">{educationItem.degree}</Heading>
+                    <Metadata size="sm">
+                      <MetadataItem size="sm">
+                        <FormattedDate
+                          date={educationItem.startDate}
+                          format="YYYY"
+                        />
+                      </MetadataItem>
+                      <MetadataItem size="sm">
+                        <FormattedDate
+                          date={educationItem.endDate}
+                          format="YYYY"
+                        />
+                      </MetadataItem>
+                      <MetadataItem size="sm">
+                        {educationItem.school}
+                      </MetadataItem>
+                    </Metadata>
+                  </article>
+                );
+              })
+            }
+          </div>
+        </Section>
       </div>
-      <div class="md:col-span-4 md:col-start-9 py-6 md:py-10"></div>
+      <div class="md:col-span-4 md:col-start-9 py-6 md:py-10">
+        <Sidebar>
+          <SidebarSection>
+            <SidebarSectionHeading title="Featured Skills" />
+            {
+              Skills.map((skillItem) => (
+                <article class="px-4 py-3">
+                  <Heading as="h4" size="sm" class="mb-2">
+                    {skillItem.name}
+                  </Heading>
+                  <ul class="flex flex-wrap gap-2">
+                    {skillItem.relatedSkills.map((relatedSkillItem) => (
+                      <li>
+                        <Badge as="div" color="dark">
+                          {relatedSkillItem}
+                        </Badge>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </SidebarSection>
+        </Sidebar>
+      </div>
     </Container>
   </main>
 </Layout>

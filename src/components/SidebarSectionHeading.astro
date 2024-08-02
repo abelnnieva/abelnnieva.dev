@@ -1,4 +1,6 @@
 ---
+import Heading from "@/components/Heading.astro";
+
 interface Props {
   title: string;
   class?: string;
@@ -7,11 +9,6 @@ interface Props {
 const { title, class: className } = Astro.props;
 ---
 
-<h4
-  class:list={[
-    "text-base/none font-bold uppercase px-4 py-3 text-gray-900 dark:text-white",
-    className,
-  ]}
->
+<Heading as="h3" class:list={["uppercase px-4 py-3 leading-none", className]}>
   {title}
-</h4>
+</Heading>

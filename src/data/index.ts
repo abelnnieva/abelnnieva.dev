@@ -1,4 +1,9 @@
-import type { NavigationItem, SocialMediaItem } from "../types";
+import type {
+  EducationItem,
+  NavigationItem,
+  SkillItem,
+  SocialMediaItem,
+} from "@/types";
 
 export const Brand: string = "Abel N. Nieva";
 
@@ -19,9 +24,9 @@ export const Navigation: NavigationItem[] = [
     href: "/projects",
   },
   {
-    text: "Work Experience",
-    label: "work-experience",
-    href: "/work-experience",
+    text: "Resume",
+    label: "resume",
+    href: "/resume",
   },
   {
     text: "About",
@@ -60,5 +65,68 @@ export const SocialMedia: SocialMediaItem[] = [
     text: "LinkedIn",
     href: "https://www.linkedin.com/in/abelnnieva",
     icon: "brand-linkedin",
+  },
+];
+
+export const Education: EducationItem[] = [
+  {
+    school: "Universidad Politécnica de Madrid ",
+    degree: "Bachelor’s Degree in Software Engineering",
+    startDate: new Date("2008-09-01"),
+    endDate: new Date("2013-06-30"),
+  },
+  {
+    school: "Escuela Superior Luther King",
+    degree: "Higher Certificate in Science in Computer Systems Administration",
+    startDate: new Date("2006-09-01"),
+    endDate: new Date("2008-06-30"),
+  },
+  {
+    school: "Escuela de Educación Técnica Juana Azurduy",
+    degree: "High School Diploma in Sciences",
+    startDate: new Date("2002-03-01"),
+    endDate: new Date("2004-12-31"),
+  },
+];
+
+export const Skills: SkillItem[] = [
+  {
+    name: "Soft Skills",
+    relatedSkills: [
+      "Leadership",
+      "Communication",
+      "Teamwork",
+      "Problem-Solving",
+      "Continuous Learning",
+    ],
+  },
+  {
+    name: "Languages",
+    relatedSkills: [
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Sass",
+      "PHP",
+      "Python",
+    ],
+  },
+  {
+    name: "Frameworks & Libraries",
+    relatedSkills: [
+      "Angular",
+      "Vue.js",
+      "Nuxt.js",
+      "NestJS",
+      "Astro",
+      "jQuery",
+      "RxJS",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    name: "CMS & Databases",
+    relatedSkills: ["Strapi", "WordPress", "PostgreSQL", "MySQL", "MongoDB"],
   },
 ];
