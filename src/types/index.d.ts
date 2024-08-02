@@ -37,12 +37,6 @@ export interface SocialMediaItem extends Link {
   icon: "brand-x" | "brand-instagram" | "brand-github" | "brand-linkedin";
 }
 
-export interface Topic {
-  name: string;
-  description: string;
-  logo: Logo;
-}
-
 export interface EducationItem {
   school: string;
   degree: string;

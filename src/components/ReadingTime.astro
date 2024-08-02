@@ -7,7 +7,7 @@ interface Props {
 const { time, class: className } = Astro.props;
 ---
 
-<div class:list={["text-gray-400 dark:text-gray-500", className]}>
+<div class:list={[className]}>
   <span itemprop="timeRequired">{time} min read</span>
   <meta itemprop="timeRequired" content={`PT${time}M`} hidden />
 </div>

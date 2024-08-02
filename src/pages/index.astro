@@ -1,15 +1,15 @@
 ---
-import { About, SocialMedia } from "../data";
-import { getCollection, getEntry } from "astro:content";
-import Avatar from "../components/Avatar.astro";
-import Container from "../components/Container.astro";
-import ExternalLink from "../components/ExternalLink.astro";
-import Layout from "../layouts/Layout.astro";
-import Note from "../components/Note.astro";
-import Section from "../components/Section.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import SocialLink from "../components/SocialLink.astro";
-import { calculateReadingTime } from "../lib/utils";
+import { About, SocialMedia } from "@/data";
+import { calculateReadingTime } from "@/lib/utils";
+import { getCollection } from "astro:content";
+import Avatar from "@/components/Avatar.astro";
+import Container from "@/components/Container.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
+import Layout from "@/layouts/Layout.astro";
+import Note from "@/components/Note.astro";
+import Section from "@/components/Section.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import SocialLink from "@/components/SocialLink.astro";
 
 const allNotes = await getCollection("notes", ({ data }) => {
   return data.isDraft !== true;
@@ -62,7 +62,7 @@ allNotes.sort(
         </ul>
       </div>
     </Container>
-    <Container class="grid grid-cols-1 md:grid-cols-12">
+    <Container class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-0">
       <div class="md:col-span-7">
         <Section>
           <SectionHeading
@@ -72,20 +72,11 @@ allNotes.sort(
           <div class="flex flex-col gap-12">
             {
               allNotes.slice(0, 5).map(async (note) => {
-                const topic = await getEntry(note.data.topic);
-                const logo = await getEntry(topic.data.logo);
                 const readingTime = calculateReadingTime(note.body);
                 return (
                   <Note
                     slug={note.slug}
-                    title={note.data.title}
-                    publishDate={note.data.publishDate}
-                    description={note.data.description}
-                    topic={{
-                      name: topic.data.name,
-                      description: topic.data.description,
-                      logo: logo.data,
-                    }}
+                    note={note.data}
                     readingTime={readingTime}
                   />
                 );

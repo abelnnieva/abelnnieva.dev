@@ -1,15 +1,15 @@
 ---
-import { calculateReadingTime } from "../lib/utils";
+import { calculateReadingTime } from "@/lib/utils";
 import { getCollection, getEntry } from "astro:content";
-import Button from "../components/Button.astro";
-import Container from "../components/Container.astro";
-import Layout from "../layouts/Layout.astro";
-import Logo from "../components/Logo.astro";
-import Note from "../components/Note.astro";
-import PageHeader from "../components/PageHeader.astro";
-import Sidebar from "../components/Sidebar.astro";
-import SidebarSection from "../components/SidebarSection.astro";
-import SidebarSectionHeading from "../components/SidebarSectionHeading.astro";
+import Button from "@/components/Button.astro";
+import Container from "@/components/Container.astro";
+import Layout from "@/layouts/Layout.astro";
+import Logo from "@/components/Logo.astro";
+import Note from "@/components/Note.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import SidebarSection from "@/components/SidebarSection.astro";
+import SidebarSectionHeading from "@/components/SidebarSectionHeading.astro";
 
 const allNotes = await getCollection("notes", ({ data }) => {
   return data.isDraft !== true;
@@ -26,25 +26,18 @@ const allTopics = await getCollection("topics");
       title="Notes on software, product development, and beyond."
       text="A mix of thoughts on programming, building products, and other random topics. Raw and unstructured."
     />
-    <Container class="grid grid-cols-1 md:grid-cols-12 py-6 md:py-12">
+    <Container
+      class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-0 py-6 md:py-12"
+    >
       <div class="md:col-span-7">
         <div class="flex flex-col gap-12">
           {
             allNotes.map(async (note) => {
-              const topic = await getEntry(note.data.topic);
-              const logo = await getEntry(topic.data.logo);
               const readingTime = calculateReadingTime(note.body);
               return (
                 <Note
                   slug={note.slug}
-                  title={note.data.title}
-                  publishDate={note.data.publishDate}
-                  description={note.data.description}
-                  topic={{
-                    name: topic.data.name,
-                    description: topic.data.description,
-                    logo: logo.data,
-                  }}
+                  note={note.data}
                   readingTime={readingTime}
                 />
               );

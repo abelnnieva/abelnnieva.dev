@@ -1,31 +1,27 @@
 ---
-import FormattedDate from "../components/FormattedDate.astro";
-import FramedLogo from "../components/FramedLogo.astro";
-import Icon from "./Icon.astro";
-import NoteMeta from "../components/NoteMeta.astro";
-import NoteMetaSeparator from "./NoteMetaSeparator.astro";
-import ReadingTime from "./ReadingTime.astro";
-import type { Topic } from "../types";
+import { getEntry } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+import FramedLogo from "@/components/FramedLogo.astro";
+import Heading from "@/components/Heading.astro";
+import Icon from "@/components/Icon.astro";
+import Metadata from "@/components/Metadata.astro";
+import MetadataItem from "@/components/MetadataItem.astro";
+import ReadingTime from "@/components/ReadingTime.astro";
+import Text from "@/components/Text.astro";
+import type { InferEntrySchema } from "astro:content";
 
 interface Props {
   slug: string;
-  publishDate: Date;
-  title: string;
-  description: string;
-  topic: Topic;
+  note: InferEntrySchema<"notes">;
   readingTime: number;
   class?: string;
 }
 
-const {
-  slug,
-  publishDate,
-  title,
-  description,
-  topic,
-  readingTime,
-  class: className,
-} = Astro.props;
+const { slug, note, readingTime, class: className } = Astro.props;
+
+const topic = await getEntry(note.topic);
+
+const logo = await getEntry(topic.data.logo);
 ---
 
 <article
@@ -35,41 +31,44 @@ const {
 >
   <div>
     <FramedLogo
-      name={topic.name}
-      image={topic.logo.image}
+      name={topic.data.name}
+      image={logo.data.image}
       class="relative z-10 group-hover:scale-110 transition"
     />
   </div>
   <div class="flex flex-col gap-4 justify-between">
-    <div>
-      <h3
-        class="text-base font-semibold text-gray-900 dark:text-white mb-2"
-        itemprop="headline"
-      >
+    <div class="flex flex-col gap-2">
+      <Heading as="h3" itemprop="headline">
         <span
           class="absolute -inset-y-4 -inset-x-4 z-0 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-800/50 md:rounded-lg"
         ></span>
         <a href={`/notes/${slug}`} itemprop="url">
           <span class="absolute -inset-y-4 -inset-x-4 z-20 md:rounded-lg"
           ></span>
-          <span class="relative z-10">{title}</span>
+          <span class="relative z-10">{note.title}</span>
         </a>
-      </h3>
-      <NoteMeta class="relative z-10 mb-2 gap-2">
-        <FormattedDate
-          date={publishDate}
-          class="text-sm"
-          itemprop="datePublished"
-        />
-        <NoteMetaSeparator />
-        <ReadingTime time={readingTime} class="text-sm" />
-      </NoteMeta>
-      <p
-        class="relative z-10 text-sm text-gray-500 dark:text-gray-400"
+      </Heading>
+      <Metadata size="sm" class="relative z-10">
+        <MetadataItem size="sm">
+          <FormattedDate
+            date={note.publishDate}
+            format="YYYY-MM-DD"
+            itemprop="datePublished"
+          />
+        </MetadataItem>
+        <MetadataItem size="sm">
+          <ReadingTime time={readingTime} />
+        </MetadataItem>
+      </Metadata>
+      <Text
+        as="p"
+        color="gray.500"
+        size="sm"
+        class="relative z-10"
         itemprop="description"
       >
-        {description}
-      </p>
+        {note.description}
+      </Text>
     </div>
     <div
       class="relative z-10 flex items-center gap-1 text-sm font-medium text-primary-700 dark:text-primary-500"
