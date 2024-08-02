@@ -1,12 +1,12 @@
 ---
 import { getCollection, getEntry } from "astro:content";
-import { resolveCollection } from "../lib/utils";
-import Container from "../components/Container.astro";
-import Layout from "../layouts/Layout.astro";
-import PageHeader from "../components/PageHeader.astro";
-import Project from "../components/Project.astro";
-import Section from "../components/Section.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import { resolveCollection } from "@/lib/utils";
+import Container from "@/components/Container.astro";
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import Project from "@/components/Project.astro";
+import Section from "@/components/Section.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
 
 const currentProjects = await getCollection("projects", (projectEntry) => {
   return !projectEntry.data.isArchived;
@@ -16,7 +16,10 @@ const previousProjects = await getCollection("projects", (projectEntry) => {
 });
 ---
 
-<Layout>
+<Layout
+  title="Abel N. Nieva - JavaScript and Angular Projects"
+  description="Discover the JavaScript and Angular projects by Abel N. Nieva, showcasing skills and expertise in front-end development."
+>
   <main>
     <PageHeader
       title="What I’ve crafted to leave my mark on the web universe."

@@ -1,17 +1,18 @@
 ---
 // Supports weights 100-900
 import "@fontsource-variable/inter";
-import { Brand, Navigation } from "../data";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import { Brand, Navigation } from "@/data";
+import { SEO } from "astro-seo";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import type { Props } from "astro-seo";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{Astro.props.title}</title>
     <meta charset="utf-8" />
-    <meta name="description" content="" />
+    <SEO {...Astro.props} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -20,20 +21,8 @@ import Header from "../components/Header.astro";
     <Header brand={Brand} navigation={Navigation} />
     <slot />
     <Footer navigation={Navigation} brand={Brand} />
-  </body>
-  <script
+  </body><script
     is:inline
     src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
   ></script>
 </html>
-
-<style is:global>
-  :root {
-  }
-
-  html {
-  }
-
-  body {
-  }
-</style>

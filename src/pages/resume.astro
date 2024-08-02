@@ -1,5 +1,5 @@
 ---
-import { Education, Skills } from "../data";
+import { Education, Skills } from "@/data";
 import { getCollection, getEntry } from "astro:content";
 import Badge from "@/components/Badge.astro";
 import Container from "@/components/Container.astro";
@@ -20,7 +20,10 @@ import Text from "@/components/Text.astro";
 const allWorkExperience = await getCollection("work-experience");
 ---
 
-<Layout>
+<Layout
+  title="Abel N. Nieva - Professional Resume"
+  description="View the professional resume of Abel N. Nieva, a skilled front-end engineer with extensive experience in JavaScript and Angular."
+>
   <main>
     <PageHeader
       title="An overview of my career highlights and expertise."

@@ -28,11 +28,11 @@ export const Navigation: NavigationItem[] = [
     label: "resume",
     href: "/resume",
   },
-  {
-    text: "About",
-    label: "about",
-    href: "/about",
-  },
+  // {
+  //   text: "About",
+  //   label: "about",
+  //   href: "/about",
+  // },
 ];
 
 export const About = {
