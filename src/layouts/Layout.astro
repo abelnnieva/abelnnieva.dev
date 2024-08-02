@@ -9,7 +9,7 @@ import type { Props } from "astro-seo";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="min-h-full">
   <head>
     <meta charset="utf-8" />
     <SEO {...Astro.props} />
@@ -26,3 +26,9 @@ import type { Props } from "astro-seo";
     src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
   ></script>
 </html>
+
+<style is:global>
+  body {
+    min-height: calc(100vh - 56px);
+  }
+</style>
