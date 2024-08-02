@@ -1,0 +1,22 @@
+{
+  "logo": "grupolamusa",
+  "title": "Grupo La Musa",
+  "description": "Website for a restaurant group based in Spain, offering a variety of dining and leisure experiences across multiple establishments.",
+  "techStack": [
+    "php",
+    "wordpress",
+    "mysql",
+    "digitalocean",
+    "docker",
+    "swarmpit",
+    "github"
+  ],
+  "livePreview": {
+    "isActive": true,
+    "link": {
+      "href": "https://grupolamusa.com/en/",
+      "text": "grupolamusa.com"
+    }
+  },
+  "isArchived": false
+}
