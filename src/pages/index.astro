@@ -3,17 +3,25 @@ import { About, SocialMedia } from "@/data";
 import { calculateReadingTime } from "@/lib/utils";
 import { getCollection } from "astro:content";
 import Avatar from "@/components/Avatar.astro";
+import BriefWorkExperience from "@/components/BriefWorkExperience.astro";
 import Container from "@/components/Container.astro";
 import ExternalLink from "@/components/ExternalLink.astro";
 import Layout from "@/layouts/Layout.astro";
 import Note from "@/components/Note.astro";
 import Section from "@/components/Section.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import SidebarSection from "@/components/SidebarSection.astro";
+import SidebarSectionAction from "@/components/SidebarSectionAction.astro";
+import SidebarSectionHeading from "@/components/SidebarSectionHeading.astro";
 import SocialLink from "@/components/SocialLink.astro";
+
+const allWorkExperience = await getCollection("work-experience");
 
 const allNotes = await getCollection("notes", ({ data }) => {
   return data.isDraft !== true;
 });
+
 allNotes.sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
 );
@@ -85,7 +93,33 @@ allNotes.sort(
           </div>
         </Section>
       </div>
-      <div class="md:col-span-4 md:col-start-9 py-6 md:py-10"></div>
+      <div class="md:col-span-4 md:col-start-9 py-6 md:py-10">
+        <Sidebar>
+          <SidebarSection>
+            <SidebarSectionHeading title="Work Experience" />
+            <ol>
+              {
+                allWorkExperience
+                  .reverse()
+                  .slice(0, 3)
+                  .map(async (workExperience) => {
+                    return (
+                      <BriefWorkExperience
+                        company={workExperience.data.company}
+                        position={workExperience.data.position}
+                        startDate={workExperience.data.startDate}
+                        endDate={workExperience.data.endDate}
+                        isActivePosition={workExperience.data.isActivePosition}
+                        description={workExperience.data.description}
+                      />
+                    );
+                  })
+              }
+            </ol>
+            <SidebarSectionAction text="Show more" href="/resume" />
+          </SidebarSection>
+        </Sidebar>
+      </div>
     </Container>
   </main>
 </Layout>

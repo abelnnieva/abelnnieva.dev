@@ -1,0 +1,50 @@
+---
+import { getEntry, type InferEntrySchema } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+import FramedLogo from "@/components/FramedLogo.astro";
+
+type Props = InferEntrySchema<"work-experience">;
+
+const { company, position, startDate, endDate, isActivePosition } = Astro.props;
+
+const companyCollectionEntry = await getEntry(company);
+
+const logoCollectionEntry = await getEntry(companyCollectionEntry.data.logo);
+---
+
+<li class="flex gap-4 px-4 py-3">
+  <div>
+    <FramedLogo
+      name={logoCollectionEntry.data.name}
+      image={logoCollectionEntry.data.image}
+      size="sm"
+    />
+  </div>
+  <dl class="flex flex-auto flex-wrap gap-x-2">
+    <dt class="sr-only">Company</dt>
+    <dd
+      class="flex-none text-sm font-semibold text-gray-900 dark:text-gray-100"
+    >
+      {companyCollectionEntry.data.name}
+    </dd>
+    <dt class="sr-only">Date</dt>
+    <dd
+      class="ml-auto text-xs text-gray-400 dark:text-gray-500"
+      aria-label={`${startDate.getFullYear()} until ${endDate.getFullYear()}`}
+    >
+      <FormattedDate date={startDate} format="YYYY" />
+      <span aria-hidden="true"> - </span>
+      {
+        isActivePosition ? (
+          "present"
+        ) : (
+          <FormattedDate date={endDate} format="YYYY" />
+        )
+      }
+    </dd>
+    <dt class="sr-only">Position</dt>
+    <dd class="w-full text-xs text-gray-500 dark:text-gray-400">
+      {position}
+    </dd>
+  </dl>
+</li>
