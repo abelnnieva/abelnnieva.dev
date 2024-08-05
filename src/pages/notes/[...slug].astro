@@ -30,7 +30,10 @@ const logo = await getEntry("logos", note.data.topic.id);
 const readingTime = calculateReadingTime(note.body);
 ---
 
-<Layout>
+<Layout
+  title={`Abel N. Nieva - ${note.data.title}`}
+  description={note.data.description}
+>
   <Container class="px-4 pb-6 md:pb-12 pt-8 md:pt-16">
     <div class="flex justify-between gap-4">
       <aside class="w-16" aria-label="Article actions"></aside>

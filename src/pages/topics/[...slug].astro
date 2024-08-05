@@ -25,7 +25,10 @@ allNotes.sort(
 );
 ---
 
-<Layout>
+<Layout
+  title={`Abel N. Nieva - Notes on ${topic.data.name}`}
+  description={topic.data.description}
+>
   <main>
     <PageHeader
       title={`Notes on ${topic.data.name}`}
