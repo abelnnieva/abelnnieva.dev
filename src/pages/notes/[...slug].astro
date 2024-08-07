@@ -34,9 +34,9 @@ const readingTime = calculateReadingTime(note.body);
   title={`Abel N. Nieva - ${note.data.title}`}
   description={note.data.description}
 >
-  <Container class="px-4 pb-6 md:pb-12 pt-8 md:pt-16">
+  <Container class="px-4 pb-6 md:pb-12 pt-10 md:pt-16">
     <div class="flex justify-between gap-4">
-      <aside class="w-16" aria-label="Article actions"></aside>
+      <aside class="hidden md:block w-16" aria-label="Article actions"></aside>
       <main class="max-w-screen-md">
         <article
           class="flex flex-col gap-8"
@@ -45,7 +45,7 @@ const readingTime = calculateReadingTime(note.body);
         >
           <header class="flex flex-col gap-8">
             <FramedLogo name={logo.data.name} image={logo.data.image} />
-            <Heading as="h2" size="3xl" class="text-balance">
+            <Heading as="h2" size="3xl" class="md:text-balance">
               {note.data.title}
             </Heading>
             <Metadata>
@@ -86,7 +86,7 @@ const readingTime = calculateReadingTime(note.body);
           </section>
         </article>
       </main>
-      <div class="w-16"></div>
+      <div class="hidden md:block w-16"></div>
     </div>
   </Container>
 </Layout>
