@@ -14,6 +14,7 @@ Here’s a basic example:
 
 ```astro
 ---
+// src/components/Button.astro
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{
@@ -48,12 +49,13 @@ const classes = [
 </Tag>
 ```
 
-In this example, PolymorphicComponent can render as either a `button` or an `a` tag based on the `as` prop, with TypeScript ensuring type safety for the `onClick` and `href` props.
+In this example, `Button` can render as either a `button` or an `a` tag based on the `as` prop, with TypeScript ensuring type safety for the `onClick` and `href` props.
 
 Usage example:
 
 ```astro
 ---
+// src/pages/index.astro
 import Button from "@/components/Button.astro";
 ---
 
