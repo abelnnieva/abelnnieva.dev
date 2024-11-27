@@ -3,13 +3,13 @@
   "title": "Grupo La Musa",
   "description": "Website for a restaurant group based in Spain, offering a variety of dining and leisure experiences across multiple establishments.",
   "techStack": [
-    "php",
-    "wordpress",
-    "mysql",
-    "digitalocean",
-    "docker",
-    "swarmpit",
-    "github"
+    "tailwindcss",
+    "typescript",
+    "react",
+    "nextjs",
+    "radixui",
+    "strapi",
+    "mysql"
   ],
   "livePreview": {
     "isActive": true,

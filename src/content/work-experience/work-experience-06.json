@@ -4,5 +4,5 @@
   "startDate": "2023-07-01",
   "endDate": "2024-07-30",
   "isActivePosition": true,
-  "description": "Collaborate with clients to implement responsive user interfaces using Angular and TypeScript, integrating external libraries as needed. Lead a team in feature implementation, improve the code delivery process, and initiate the migration from WordPress to Next.js. Resolve issues promptly during and after development, provide ongoing support, and manage project timelines to ensure timely delivery."
+  "description": "Collaborating with clients to implement responsive user interfaces using Angular and TypeScript, integrating external libraries as needed. Leading a team in implementing features, improving the code delivery process, and migrating a restaurant group’s website from WordPress to Next.js by building reusable React components with Radix UI and Tailwind CSS, and integrating a Strapi backend for dynamic content."
 }
